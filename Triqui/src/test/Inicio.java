@@ -1,8 +1,12 @@
 package test;
 
 import java.awt.Color;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+import model.Player;
+import model.TypePicture;
 
 public class Inicio extends javax.swing.JFrame {
     public Inicio() {
@@ -147,6 +151,9 @@ public class Inicio extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblIniciarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblIniciarMousePressed(evt);
             }
         });
 
@@ -325,6 +332,25 @@ public class Inicio extends javax.swing.JFrame {
         if(txtJugador2.getText().equals("Jugador 2"))
         txtJugador2.setText("");
     }//GEN-LAST:event_txtJugador2FocusGained
+
+    private void lblIniciarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIniciarMousePressed
+        this.dispose();
+        
+        Player player1 = new Player(TypePicture.EQUIS);
+        if(txtJugador1.getText().equals(""))
+            player1.setName("Jugador 1");
+        else
+            player1.setName(txtJugador1.getText());
+        
+        Player player2 = new Player(TypePicture.CIRCULO);
+        if(txtJugador2.getText().equals(""))
+            player2.setName("Jugador 2");
+        else
+            player2.setName(txtJugador2.getText());
+        
+        Triqui triqui = new Triqui(player1, player2);
+        triqui.setVisible(true);
+    }//GEN-LAST:event_lblIniciarMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackPanel;
