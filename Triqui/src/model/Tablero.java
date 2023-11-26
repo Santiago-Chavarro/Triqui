@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import test.Triqui;
 
 public class Tablero extends JPanel{
     private int anchoCI;
@@ -73,14 +74,17 @@ public class Tablero extends JPanel{
             }
             @Override
             public void mousePressed(MouseEvent e) {
-                
+                if(cuadro.isDrawn()) return;
                 if(actualPlayer == TypePicture.EQUIS){
                     cuadro.setTypePicture(TypePicture.EQUIS);
                     actualPlayer = TypePicture.CIRCULO;
+                    changeStyle(TypePicture.CIRCULO);
                 }else if(actualPlayer == TypePicture.CIRCULO){
                     cuadro.setTypePicture(TypePicture.CIRCULO);
                     actualPlayer = TypePicture.EQUIS;
+                    changeStyle(TypePicture.EQUIS);
                 }
+                cuadro.setDrawn(true);
                 cuadro.repaint();
                 
             }
@@ -96,7 +100,25 @@ public class Tablero extends JPanel{
         };
         
         cuadro.addMouseListener(evento);
-        
+    }
+    public void changeStyle(TypePicture actualPlayer){
+        if (actualPlayer == TypePicture.CIRCULO){
+            Triqui.imgEquis.setRuta(Ruta.JUGADORAUXILIAR);
+            Triqui.imgEquis.repaint();
+            Triqui.nameEquis.setForeground(new Color(240,240,240,100));
+            
+            Triqui.imgCirculo.setRuta(Ruta.JUGADORCIRCULO);
+            Triqui.imgCirculo.repaint();
+            Triqui.nameCirculo.setForeground(new Color(255,200,255));
+        }else if(actualPlayer == TypePicture.EQUIS){
+            Triqui.imgCirculo.setRuta(Ruta.JUGADORAUXILIAR);
+            Triqui.imgCirculo.repaint();
+            Triqui.nameCirculo.setForeground(new Color(240,240,240,100));
+            
+            Triqui.imgEquis.setRuta(Ruta.JUGADOREQUIS);
+            Triqui.imgEquis.repaint();
+            Triqui.nameEquis.setForeground(new Color(180,232,255));
+        }
     }
     
     public TypePicture getActualPlayer() {
