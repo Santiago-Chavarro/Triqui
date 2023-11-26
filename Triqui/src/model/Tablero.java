@@ -13,6 +13,7 @@ public class Tablero extends JPanel{
     private int margen;
     private Color colorTablero;
     private Color colorCI;
+    private TypePicture actualPlayer;
     
     private Player player1;
     private Player player2;
@@ -65,25 +66,30 @@ public class Tablero extends JPanel{
     }
     
     public void crearEventosCuadro(Cuadro cuadro){
+        actualPlayer = TypePicture.EQUIS;
         MouseListener evento = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
-                cuadro.setTypePicture(TypePicture.CIRCULO);
+                
+                if(actualPlayer == TypePicture.EQUIS){
+                    cuadro.setTypePicture(TypePicture.EQUIS);
+                    actualPlayer = TypePicture.CIRCULO;
+                }else if(actualPlayer == TypePicture.CIRCULO){
+                    cuadro.setTypePicture(TypePicture.CIRCULO);
+                    actualPlayer = TypePicture.EQUIS;
+                }
                 cuadro.repaint();
+                
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
             }
@@ -92,7 +98,15 @@ public class Tablero extends JPanel{
         cuadro.addMouseListener(evento);
         
     }
+    
+    public TypePicture getActualPlayer() {
+        return actualPlayer;
+    }
 
+    public void setActualPlayer(TypePicture ActualPlayer) {
+        this.actualPlayer = ActualPlayer;
+    }
+    
     public ArrayList<Cuadro> getCuadros() {
         return cuadros;
     }
