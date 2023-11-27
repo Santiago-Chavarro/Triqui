@@ -71,7 +71,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="model.Picture" name="picture1">
+        <Component class="model.Picture" name="playerCirculo">
           <Properties>
             <Property name="text" type="java.lang.String" value="picture1"/>
             <Property name="ruta" type="java.lang.String" value="/resources/JugadorCirculo.png"/>
@@ -82,7 +82,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="model.Picture" name="picture2">
+        <Component class="model.Picture" name="playerEquis">
           <Properties>
             <Property name="text" type="java.lang.String" value="picture1"/>
             <Property name="ruta" type="java.lang.String" value="/resources/JugadorEquis.png"/>

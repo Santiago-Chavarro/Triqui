@@ -5,6 +5,7 @@ public class Ruta {
     public static final String CIRCULO = "/resources/Circulo.png";
     public static final String JUGADOREQUIS = "/resources/JugadorEquis.png";
     public static final String JUGADORCIRCULO = "/resources/JugadorCirculo.png";
+    public static final String JUGADORAUXILIAR = "/resources/JugadorAuxiliar.png";
     
     public static String LINEA1 = "/resources/CirculoLine1.png";
     public static String LINEA2 = "/resources/CirculoLine2.png";

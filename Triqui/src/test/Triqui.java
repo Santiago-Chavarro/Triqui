@@ -1,10 +1,17 @@
 package test;
 
 import java.awt.Color;
+import javax.swing.JLabel;
+import model.Picture;
 import model.Player;
 import model.Tablero;
+import model.TypePicture;
 
 public class Triqui extends javax.swing.JFrame {
+    public static Picture imgEquis;
+    public static Picture imgCirculo;
+    public static JLabel nameEquis;
+    public static JLabel nameCirculo;
     
     private Player player1;
     private Player player2;
@@ -14,6 +21,11 @@ public class Triqui extends javax.swing.JFrame {
         this.player1 = player1;
         this.player2 = player2;
         init();
+        imgEquis = playerEquis;
+        imgCirculo = playerCirculo;
+        nameEquis = lblNombreJ1;
+        nameCirculo = lblNombreJ2;
+        tablero.changeStyle(TypePicture.EQUIS);
     }
     
     public void init(){
@@ -45,8 +57,8 @@ public class Triqui extends javax.swing.JFrame {
 
         panelFondo = new javax.swing.JPanel();
         lblClose = new javax.swing.JLabel();
-        picture1 = new model.Picture();
-        picture2 = new model.Picture();
+        playerCirculo = new model.Picture();
+        playerEquis = new model.Picture();
         lblNombreJ2 = new javax.swing.JLabel();
         lblNombreJ1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -77,15 +89,15 @@ public class Triqui extends javax.swing.JFrame {
         panelFondo.add(lblClose);
         lblClose.setBounds(370, 0, 16, 30);
 
-        picture1.setText("picture1");
-        picture1.setRuta("/resources/JugadorCirculo.png");
-        panelFondo.add(picture1);
-        picture1.setBounds(275, 50, 50, 50);
+        playerCirculo.setText("picture1");
+        playerCirculo.setRuta("/resources/JugadorCirculo.png");
+        panelFondo.add(playerCirculo);
+        playerCirculo.setBounds(275, 50, 50, 50);
 
-        picture2.setText("picture1");
-        picture2.setRuta("/resources/JugadorEquis.png");
-        panelFondo.add(picture2);
-        picture2.setBounds(75, 50, 50, 50);
+        playerEquis.setText("picture1");
+        playerEquis.setRuta("/resources/JugadorEquis.png");
+        panelFondo.add(playerEquis);
+        playerEquis.setBounds(75, 50, 50, 50);
 
         lblNombreJ2.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
         lblNombreJ2.setForeground(new java.awt.Color(255, 200, 255));
@@ -174,7 +186,7 @@ public class Triqui extends javax.swing.JFrame {
     private javax.swing.JLabel lblPuntajeJ1;
     private javax.swing.JLabel lblPuntajeJ2;
     private javax.swing.JPanel panelFondo;
-    private model.Picture picture1;
-    private model.Picture picture2;
+    private model.Picture playerCirculo;
+    private model.Picture playerEquis;
     // End of variables declaration//GEN-END:variables
 }

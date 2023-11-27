@@ -11,11 +11,13 @@ public class Cuadro extends JPanel{
     private int altura;
     private Color color;
     private TypePicture typePicture;
+    private boolean drawn;
     
     public Cuadro(int ancho, int altura, Color color){
         this.ancho = ancho;
         this.altura = altura;
         this.color = color;
+        drawn = false;
         init();
     }
     
@@ -36,6 +38,14 @@ public class Cuadro extends JPanel{
             imagen = new ImageIcon(getClass().getResource(Ruta.EQUIS));
         
         g.drawImage(imagen.getImage(), 0,0,this.getWidth(), this.getHeight(), null);
+    }
+
+    public boolean isDrawn() {
+        return drawn;
+    }
+
+    public void setDrawn(boolean drawn) {
+        this.drawn = drawn;
     }
 
     public int getAncho() {
