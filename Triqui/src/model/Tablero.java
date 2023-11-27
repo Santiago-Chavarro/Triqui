@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import test.Resultado;
 import test.Triqui;
 
 public class Tablero extends JPanel{
@@ -20,10 +21,9 @@ public class Tablero extends JPanel{
     private Player player2;
     
     private ArrayList<Cuadro> cuadros;
-    
+    private Cuadro cuadroFrontal;
     
     public Tablero(){
-    
     }
     
     private void init(){
@@ -41,6 +41,11 @@ public class Tablero extends JPanel{
         setLayout(null);
         setSize(anchoCI * 3 + margen * 4, alturaCI * 3 + margen * 4);
         setBackground(colorTablero);
+        cuadroFrontal = new Cuadro(this.getWidth(),this.getHeight(),Color.RED);
+        cuadroFrontal.setLocation(0,0);
+        cuadroFrontal.setOpaque(false);
+        cuadroFrontal.setEnabled(false);
+        add(cuadroFrontal);
         crearCI();
     }
     
@@ -57,6 +62,8 @@ public class Tablero extends JPanel{
                 Cuadro cuadro = new Cuadro(anchoCI, alturaCI, colorCI);
                 cuadro.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 cuadro.setLocation(x, y);
+                cuadro.setI(i);
+                cuadro.setJ(j);
                 add(cuadro);
                 cuadros.add(cuadro);
                 crearEventosCuadro(cuadro);
@@ -75,18 +82,26 @@ public class Tablero extends JPanel{
             @Override
             public void mousePressed(MouseEvent e) {
                 if(cuadro.isDrawn()) return;
+                
+                TypePicture tPictureResult = null;
                 if(actualPlayer == TypePicture.EQUIS){
                     cuadro.setTypePicture(TypePicture.EQUIS);
+                    player1.getTablero()[cuadro.getI()][cuadro.getJ()] = 1;
+                    tPictureResult = player1.tresEnRaya(player2);
+                    result (tPictureResult, TypePicture.EQUIS);
                     actualPlayer = TypePicture.CIRCULO;
                     changeStyle(TypePicture.CIRCULO);
+                    
                 }else if(actualPlayer == TypePicture.CIRCULO){
                     cuadro.setTypePicture(TypePicture.CIRCULO);
+                    player2.getTablero()[cuadro.getI()][cuadro.getJ()] = 1;
+                    tPictureResult = player2.tresEnRaya(player1);
+                    result (tPictureResult, TypePicture.CIRCULO);
                     actualPlayer = TypePicture.EQUIS;
                     changeStyle(TypePicture.EQUIS);
                 }
                 cuadro.setDrawn(true);
-                cuadro.repaint();
-                
+                repaint();
             }
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -120,7 +135,26 @@ public class Tablero extends JPanel{
             Triqui.nameEquis.setForeground(new Color(180,232,255));
         }
     }
-    
+    public void result (TypePicture tPictureResult, TypePicture winner){
+        
+        if(tPictureResult == TypePicture.TIE){
+            System.out.println("Empate");
+            Resultado resultado = new Resultado(TypePicture.TIE);
+            resultado.setVisible(true);
+        }else if (tPictureResult != null){
+            System.out.println("Hay un ganador");
+            Ruta.cambiarRutas(winner);
+            cuadroFrontal.setTypePicture(tPictureResult);
+            desactivarCuadros(true);
+            Resultado resultado = new Resultado(winner);
+            resultado.setVisible(true);
+        }
+    }
+    public void desactivarCuadros(boolean valor){
+        for(Cuadro cuadro : cuadros){
+            cuadro.setDrawn(valor);
+        }
+    }
     public TypePicture getActualPlayer() {
         return actualPlayer;
     }

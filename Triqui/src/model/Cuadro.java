@@ -12,6 +12,8 @@ public class Cuadro extends JPanel{
     private Color color;
     private TypePicture typePicture;
     private boolean drawn;
+    private int i;
+    private int j;
     
     public Cuadro(int ancho, int altura, Color color){
         this.ancho = ancho;
@@ -36,10 +38,42 @@ public class Cuadro extends JPanel{
             imagen = new ImageIcon(getClass().getResource(Ruta.CIRCULO));
         else if(typePicture == TypePicture.EQUIS)
             imagen = new ImageIcon(getClass().getResource(Ruta.EQUIS));
+        else if(typePicture == TypePicture.LINE1)
+            imagen = new ImageIcon(getClass().getResource(Ruta.LINE1));
+        else if(typePicture == TypePicture.LINE2)
+            imagen = new ImageIcon(getClass().getResource(Ruta.LINE2));
+        else if(typePicture == TypePicture.LINE3)
+            imagen = new ImageIcon(getClass().getResource(Ruta.LINE3));
+        else if(typePicture == TypePicture.LINE4)
+            imagen = new ImageIcon(getClass().getResource(Ruta.LINE4));
+        else if(typePicture == TypePicture.LINE5)
+            imagen = new ImageIcon(getClass().getResource(Ruta.LINE5));
+        else if(typePicture == TypePicture.LINE6)
+            imagen = new ImageIcon(getClass().getResource(Ruta.LINE6));
+        else if(typePicture == TypePicture.LINE7)
+            imagen = new ImageIcon(getClass().getResource(Ruta.LINE7));
+        else if(typePicture == TypePicture.LINE8)
+            imagen = new ImageIcon(getClass().getResource(Ruta.LINE8));
         
         g.drawImage(imagen.getImage(), 0,0,this.getWidth(), this.getHeight(), null);
     }
 
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public int getJ() {
+        return j;
+    }
+
+    public void setJ(int j) {
+        this.j = j;
+    }
+    
     public boolean isDrawn() {
         return drawn;
     }

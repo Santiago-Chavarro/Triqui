@@ -33,6 +33,9 @@ public class Triqui extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
+        panelFondo.setOpaque(false);
+        setBackground(new Color(0,0,0,0));
+        
         
         lblNombreJ1.setText(player1.getName());
         lblNombreJ2.setText(player2.getName());
@@ -55,7 +58,7 @@ public class Triqui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelFondo = new javax.swing.JPanel();
+        panelFondo = new model.RoundPanel();
         lblClose = new javax.swing.JLabel();
         playerCirculo = new model.Picture();
         playerEquis = new model.Picture();
