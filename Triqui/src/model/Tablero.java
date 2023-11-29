@@ -150,9 +150,20 @@ public class Tablero extends JPanel{
             resultado.setVisible(true);
         }
     }
+    public void restart(){
+        desactivarCuadros(false);
+        
+    }
     public void desactivarCuadros(boolean valor){
         for(Cuadro cuadro : cuadros){
             cuadro.setDrawn(valor);
+            deletePictures();
+            cuadroFrontal.setTypePicture(null);
+        }
+    }
+    public void deletePictures(){
+        for(Cuadro cuadro : cuadros){
+            cuadro.setTypePicture(null);
         }
     }
     public TypePicture getActualPlayer() {

@@ -12,6 +12,8 @@ public class Triqui extends javax.swing.JFrame {
     public static Picture imgCirculo;
     public static JLabel nameEquis;
     public static JLabel nameCirculo;
+    public static JLabel scoreEquis;
+    public static JLabel scoreCirculo;
     
     private Player player1;
     private Player player2;
