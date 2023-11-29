@@ -27,6 +27,8 @@ public class Triqui extends javax.swing.JFrame {
         imgCirculo = playerCirculo;
         nameEquis = lblNombreJ1;
         nameCirculo = lblNombreJ2;
+        scoreEquis = lblScore1;
+        scoreCirculo = lblScore2;
         tablero.changeStyle(TypePicture.EQUIS);
     }
     
@@ -67,8 +69,8 @@ public class Triqui extends javax.swing.JFrame {
         lblNombreJ2 = new javax.swing.JLabel();
         lblNombreJ1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lblPuntajeJ1 = new javax.swing.JLabel();
-        lblPuntajeJ2 = new javax.swing.JLabel();
+        lblScore1 = new javax.swing.JLabel();
+        lblScore2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,19 +127,19 @@ public class Triqui extends javax.swing.JFrame {
         panelFondo.add(jLabel1);
         jLabel1.setBounds(190, 50, 20, 60);
 
-        lblPuntajeJ1.setFont(new java.awt.Font("Cooper Black", 0, 36)); // NOI18N
-        lblPuntajeJ1.setForeground(new java.awt.Color(255, 255, 255));
-        lblPuntajeJ1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPuntajeJ1.setText("0");
-        panelFondo.add(lblPuntajeJ1);
-        lblPuntajeJ1.setBounds(130, 50, 60, 60);
+        lblScore1.setFont(new java.awt.Font("Cooper Black", 0, 36)); // NOI18N
+        lblScore1.setForeground(new java.awt.Color(255, 255, 255));
+        lblScore1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblScore1.setText("0");
+        panelFondo.add(lblScore1);
+        lblScore1.setBounds(130, 50, 60, 60);
 
-        lblPuntajeJ2.setFont(new java.awt.Font("Cooper Black", 0, 36)); // NOI18N
-        lblPuntajeJ2.setForeground(new java.awt.Color(255, 255, 255));
-        lblPuntajeJ2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPuntajeJ2.setText("0");
-        panelFondo.add(lblPuntajeJ2);
-        lblPuntajeJ2.setBounds(210, 50, 60, 60);
+        lblScore2.setFont(new java.awt.Font("Cooper Black", 0, 36)); // NOI18N
+        lblScore2.setForeground(new java.awt.Color(255, 255, 255));
+        lblScore2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblScore2.setText("0");
+        panelFondo.add(lblScore2);
+        lblScore2.setBounds(210, 50, 60, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,8 +190,8 @@ public class Triqui extends javax.swing.JFrame {
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblNombreJ1;
     private javax.swing.JLabel lblNombreJ2;
-    private javax.swing.JLabel lblPuntajeJ1;
-    private javax.swing.JLabel lblPuntajeJ2;
+    private javax.swing.JLabel lblScore1;
+    private javax.swing.JLabel lblScore2;
     private javax.swing.JPanel panelFondo;
     private model.Picture playerCirculo;
     private model.Picture playerEquis;

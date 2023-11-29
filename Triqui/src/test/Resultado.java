@@ -7,12 +7,17 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import model.Player;
 import model.Ruta;
+import model.Tablero;
 import model.TypePicture;
 
 public class Resultado extends javax.swing.JFrame {
-      
-    public Resultado(TypePicture winner) {
+    private Tablero tablero; 
+    private TypePicture winner;
+    
+    public Resultado(TypePicture winner, Tablero tablero) {
         init();
+        this.tablero = tablero;
+        this.winner = winner;
         if(winner == TypePicture.EQUIS){
             imgLeft.setRuta(Ruta.JUGADOREQUIS);
             imgRight.setRuta(Ruta.EQUIS);
@@ -154,7 +159,8 @@ public class Resultado extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCloseMouseEntered
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
-        System.exit(0);
+        dispose();
+        tablero.restart(winner);
     }//GEN-LAST:event_lblCloseMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

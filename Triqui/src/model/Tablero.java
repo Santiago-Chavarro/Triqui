@@ -16,6 +16,7 @@ public class Tablero extends JPanel{
     private Color colorTablero;
     private Color colorCI;
     private TypePicture actualPlayer;
+    private TypePicture gameTurn;
     
     private Player player1;
     private Player player2;
@@ -24,6 +25,7 @@ public class Tablero extends JPanel{
     private Cuadro cuadroFrontal;
     
     public Tablero(){
+        init();
     }
     
     private void init(){
@@ -35,6 +37,7 @@ public class Tablero extends JPanel{
         player1 = new Player();
         player2 = new Player();
         cuadros = new ArrayList<>();
+        gameTurn = TypePicture.EQUIS;
     }
     
     public void crearTablero(){
@@ -139,26 +142,44 @@ public class Tablero extends JPanel{
         
         if(tPictureResult == TypePicture.TIE){
             System.out.println("Empate");
-            Resultado resultado = new Resultado(TypePicture.TIE);
+            Resultado resultado = new Resultado(TypePicture.TIE, this);
             resultado.setVisible(true);
         }else if (tPictureResult != null){
             System.out.println("Hay un ganador");
             Ruta.cambiarRutas(winner);
             cuadroFrontal.setTypePicture(tPictureResult);
             desactivarCuadros(true);
-            Resultado resultado = new Resultado(winner);
+            Resultado resultado = new Resultado(winner, this);
             resultado.setVisible(true);
         }
     }
-    public void restart(){
+    public void restart(TypePicture winner1){
         desactivarCuadros(false);
-        
+        deletePictures();
+        cuadroFrontal.setTypePicture(null);
+        if (winner1 == TypePicture.EQUIS){
+            int newScore = Integer.parseInt(Triqui.scoreEquis.getText())+1;
+            Triqui.scoreEquis.setText(String.valueOf(newScore));
+        }else if (winner1 == TypePicture.CIRCULO){
+            int newScore = Integer.parseInt(Triqui.scoreCirculo.getText())+1;
+            Triqui.scoreCirculo.setText(String.valueOf(newScore));
+        }
+        if(gameTurn == TypePicture.EQUIS){
+            actualPlayer = TypePicture.CIRCULO;
+            gameTurn = TypePicture.CIRCULO;
+        }else if(gameTurn == TypePicture.CIRCULO){
+            actualPlayer = TypePicture.EQUIS;
+            gameTurn = TypePicture.EQUIS;
+        }
+        changeStyle(actualPlayer);
+        player1.limpiar();
+        player2.limpiar();
+        repaint();
     }
     public void desactivarCuadros(boolean valor){
         for(Cuadro cuadro : cuadros){
             cuadro.setDrawn(valor);
-            deletePictures();
-            cuadroFrontal.setTypePicture(null);
+            
         }
     }
     public void deletePictures(){
