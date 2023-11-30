@@ -6,8 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import test.Resultado;
-import test.Triqui;
+import view.Resultado;
+import view.Triqui;
 
 public class Tablero extends JPanel{
     private int anchoCI;

@@ -1,5 +1,5 @@
 package main;
-import test.Inicio;
+import view.Inicio;
 
 public class Main {
 
